@@ -1,14 +1,16 @@
+%define slurmversion %(rpm -q slurm --queryformat "%{VERSION}")
+
 Summary: Slurm spank plugin for X11 display support
 Name: slurm-spank-x11
 Version: 0.2.5
-Release: 1
+Release: 3.scitas
 License: GPL
 Group: System Environment/Base
-Source0: %{name}-%{version}.tar.gz
+Source:  %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
-BuildRequires: slurm-devel
-Requires: slurm
+BuildRequires: pkgconfig(slurm)
+Requires: slurm = %{slurmversion}
 
 %description
 x11 SLURM spank plugin enables to export X11 display on a part or all of the 
@@ -36,7 +38,7 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/slurm
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/slurm/plugstack.conf.d
 install -m 755 slurm-spank-x11 $RPM_BUILD_ROOT%{_libexecdir}
 install -m 755 x11.so $RPM_BUILD_ROOT%{_libdir}/slurm
-install -m 644 plugstack.conf $RPM_BUILD_ROOT%{_sysconfdir}/slurm/plugstack.conf.d/x11.conf.example
+install -m 644 plugstack.conf $RPM_BUILD_ROOT%{_sysconfdir}/slurm/plugstack.conf.d/x11.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -45,7 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %{_libexecdir}/slurm-spank-x11
 %{_libdir}/slurm/x11.so
-%config %{_sysconfdir}/slurm/plugstack.conf.d/x11.conf.example
+%config %{_sysconfdir}/slurm/plugstack.conf.d/x11.conf
 
 %changelog
 * Tue Nov 06 2012 HAUTREUX Matthieu <matthieu.hautreux@cea.fr> -  0.2.5-1
