@@ -3,7 +3,7 @@
 Summary: Slurm spank plugin for X11 display support
 Name: slurm-spank-x11
 Version: 0.2.5
-Release: 3.scitas
+Release: 4.scitas
 License: GPL
 Group: System Environment/Base
 Source:  %{name}-%{version}.tar.gz
