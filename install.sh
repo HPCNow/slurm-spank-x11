@@ -6,6 +6,8 @@ PLUGINDIR=$( scontrol show config | awk '/PluginDir/ {print $3}' )
 EXECDIR=$( awk '/define X11_L/ {print $3}' slurm-spank-x11-plug.c | sed 's/"//g;s/\/slurm-spank-x11//g')
 ## Installation directory for xalloc script
 SCRIPTDIR=$( which salloc | sed 's/\/salloc//g' )
+## plugstack.conf path
+PLUGSTACKPATH=$( scontrol show config | awk '/PlugStackConfig/ {print $3}' )
 #
 ## Check if executing as root
 if [[ $EUID -ne 0 ]]; then
@@ -96,3 +98,6 @@ if [ "${INSTALL}" != false ]; then
 else
      echo -en '\n>>> No installation directory. Skip xalloc installation\n\n'
 fi
+#
+## Add plugin line to plugstack.conf if it does not exist
+grep -q -F "optional   x11.so" ${PLUGSTACKPATH} || echo "optional   x11.so" >> ${PLUGSTACKPATH}
