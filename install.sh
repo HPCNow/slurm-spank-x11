@@ -22,7 +22,7 @@ if [ ! -d "${PLUGINDIR}" ]; then
     echo -e "\nDirectory ${PLUGINDIR} not present. What should I do?"
     select yn in "Create" "Skip"; do
 	case $yn in
-            Create ) echo -ne '\n>>> '; mkdir -vp ${PLUGINDIR}; break;;
+            Create ) echo; mkdir -vp ${PLUGINDIR}; echo; break;;
             Skip ) INSTALL=false; break;;
 	esac
     done
@@ -32,10 +32,10 @@ if [ "${INSTALL}" != false ]; then
     echo -en "\nInstall x11.so in ${PLUGINDIR} ?\n"
     select yn in "Yes" "No"; do
 	case $yn in
-            Yes ) echo -ne '\n>>> '; mv -v x11.so ${PLUGINDIR}; \
-		  echo -ne '\n>>> '; chmod -v 755 ${PLUGINDIR}/x11.so; echo;\
+            Yes ) echo; mv -v x11.so ${PLUGINDIR}; \
+		  chmod -v 755 ${PLUGINDIR}/x11.so; echo;\
 		  break;;
-            No ) echo -ne '\n>>> Skip x11.so installation\n\n'; \
+            No ) echo -ne '\nSkip x11.so installation\n\n'; \
 		 break;;
 	esac
     done
@@ -48,9 +48,7 @@ if [ ! -d "${EXECDIR}" ]; then
     echo -e "Directory ${EXECDIR} not present. What should I do?"
     select yn in "Create" "Skip"; do
 	case $yn in
-            Create ) echo -ne '\n>>> '; \
-		     mkdir -vp ${EXECDIR}; \
-		     echo; \
+            Create ) echo; mkdir -vp ${EXECDIR}; echo; \
 		     break;;
             Skip ) INSTALL=false; break;;
 	esac
@@ -61,10 +59,10 @@ if [ "${INSTALL}" != false ]; then
     echo "Install slurm-spank-x11 in ${EXECDIR} ?"
     select yn in "Yes" "No"; do
 	case $yn in
-            Yes ) echo -ne '\n>>> '; mv -v slurm-spank-x11 ${EXECDIR}; \
-		  echo -ne '\n>>> '; chmod -v 755 ${EXECDIR}/slurm-spank-x11; echo;\
+            Yes ) echo; mv -v slurm-spank-x11 ${EXECDIR}; \
+		  chmod -v 755 ${EXECDIR}/slurm-spank-x11; echo;\
 		  break;;
-            No ) echo -ne '\n>>> Skip slurm-spank-x11 installation\n'; \
+            No ) echo -ne '\nSkip slurm-spank-x11 installation\n'; \
 		 break;;
 	esac
     done
@@ -77,9 +75,7 @@ if [ ! -d "${SCRIPTDIR}" ]; then
     echo -e "Directory ${SCRIPTDIR} not present. What should I do?"
     select yn in "Create" "Skip"; do
 	case $yn in
-            Create ) echo -ne '\n>>> '; \
-		     mkdir -vp ${SCRIPTDIR}; \
-		     echo; \
+            Create ) echo; mkdir -vp ${SCRIPTDIR}; echo;\
 		     break;;
             Skip ) INSTALL=false; break;;
 	esac
@@ -90,8 +86,8 @@ if [ "${INSTALL}" != false ]; then
     echo "Install xalloc in ${SCRIPTDIR} ?"
     select yn in "Yes" "No"; do
 	case $yn in
-            Yes ) echo -ne '\n>>> '; cp -v xalloc ${SCRIPTDIR}; \
-		  echo -ne '\n>>> '; chmod -v 755 ${SCRIPTDIR}/xalloc; echo;\
+            Yes ) echo; cp -v xalloc ${SCRIPTDIR}; \
+		  chmod -v 755 ${SCRIPTDIR}/xalloc; echo;\
 		  break;;
             No ) echo -ne '\n>>> Skip xalloc installation\n'; \
 		 break;;
