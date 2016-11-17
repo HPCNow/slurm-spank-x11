@@ -100,4 +100,5 @@ else
 fi
 #
 ## Add plugin line to plugstack.conf if it does not exist
+echo -en "Adding plugin configuration in ${PLUGSTACKPATH}\n\n"
 grep -q -F "optional   x11.so" ${PLUGSTACKPATH} || echo "optional   x11.so" >> ${PLUGSTACKPATH}
