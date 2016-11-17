@@ -3,7 +3,7 @@
 ## Installation directory for x11.so
 PLUGINDIR=$( scontrol show config | awk '/PluginDir/ {print $3}' )
 ## Installation directory for slurm-spank-x11
-EXECDIR=$( awk '/define X11_L/ {print $3}' slurm-spank-x11-plug.c | sed 's/"//g' )
+EXECDIR=$( awk '/define X11_L/ {print $3}' slurm-spank-x11-plug.c | sed 's/"//g;s/\/slurm-spank-x11//g')
 ## Installation directory for xalloc script
 SCRIPTDIR=$( which salloc | sed 's/\/salloc//g' )
 #
@@ -32,8 +32,8 @@ if [ "${INSTALL}" != false ]; then
     echo -en "\nInstall x11.so in ${PLUGINDIR} ?\n"
     select yn in "Yes" "No"; do
 	case $yn in
-            Yes ) mv x11.so ${PLUGINDIR}; \
-		  chmod 755 ${PLUGINDIR}/x11.so; \
+            Yes ) echo -ne '\n>>> '; mv -v x11.so ${PLUGINDIR}; \
+		  echo -ne '\n>>> '; chmod -v 755 ${PLUGINDIR}/x11.so; echo;\
 		  break;;
             No ) echo -ne '\n>>> Skip x11.so installation\n\n'; \
 		 break;;
@@ -61,8 +61,8 @@ if [ "${INSTALL}" != false ]; then
     echo "Install slurm-spank-x11 in ${EXECDIR} ?"
     select yn in "Yes" "No"; do
 	case $yn in
-            Yes ) mv slurm-spank-x11 ${EXECDIR}; \
-		  chmod 755 ${EXECDIR}/slurm-spank-x11; \
+            Yes ) echo -ne '\n>>> '; mv -v slurm-spank-x11 ${EXECDIR}; \
+		  echo -ne '\n>>> '; chmod -v 755 ${EXECDIR}/slurm-spank-x11; echo;\
 		  break;;
             No ) echo -ne '\n>>> Skip slurm-spank-x11 installation\n'; \
 		 break;;
@@ -90,8 +90,8 @@ if [ "${INSTALL}" != false ]; then
     echo "Install xalloc in ${SCRIPTDIR} ?"
     select yn in "Yes" "No"; do
 	case $yn in
-            Yes ) cp xalloc ${SCRIPTDIR}; \
-		  chmod 755 ${SCRIPTDIR}/xalloc; \
+            Yes ) echo -ne '\n>>> '; cp -v xalloc ${SCRIPTDIR}; \
+		  echo -ne '\n>>> '; chmod -v 755 ${SCRIPTDIR}/xalloc; echo;\
 		  break;;
             No ) echo -ne '\n>>> Skip xalloc installation\n'; \
 		 break;;
