@@ -1,15 +1,25 @@
-# Building the RPM
+# Slurm plugin for X11 support
+This plugin allows to do X
+Developed by
+Contributors
+- 
+- 
+-
+
+# How to build and install RPM packages for CentOS/RHEL/SuSE
+
 ```
-export PKGNAME=$(basename $(pwd))
-# pick one of the following, the matching git tag (or reference) must exist
-export VERSION=$(grep 'Version:' $PKGNAME.spec)
-export VERSION=0.2.5-2
-export VERSION=0.2.5
-# continue
-export TOPDIR="$(pwd)/rpmbuild"
-rm -rf "${TOPDIR}"
-mkdir -p "${TOPDIR}"/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
-git archive --prefix=$PKGNAME-$(echo $VERSION | cut -f 1 -d -)/ -o $TOPDIR/SOURCES/$PKGNAME-$(echo $VERSION | cut -f 1 -d -).tar.gz $VERSION
-cp $PKGNAME.spec $TOPDIR/SPECS/
-rpmbuild --define "_topdir $TOPDIR" -bb $TOPDIR/SPECS/$PKGNAME.spec
+wget URL
+rpmbuild 
+rpm -ivh 
+```
+
+# How to build and install DEB packages for Debian/Ubuntu
+
+```
+wget URL
+tar -jxvf slurm-spank-x11-xxx
+cd slurm-spank-x11-xxx
+gbp buildpackage --git-ignore-new -us -uc
+dpkg -i slurm-spank-x11-XXX.deb
 ```

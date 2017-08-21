@@ -32,8 +32,8 @@ install: build
 	dh_installdirs
 
 	$(MAKE) BUILDROOT=$(CURDIR)/debian/`dh_listpackages` install
-	mkdir -p $(CURDIR)/debian/`dh_listpackages`/etc/slurm-llnl/plugstack.conf.d
-	install -m 640 plugstack.conf $(CURDIR)/debian/`dh_listpackages`/etc/slurm-llnl/plugstack.conf.d/x11.conf
+	mkdir -p $(CURDIR)/debian/`dh_listpackages`/etc/slurm/plugstack.conf.d
+	install -m 640 plugstack.conf $(CURDIR)/debian/`dh_listpackages`/etc/slurm/plugstack.conf.d/x11.conf
 
 # Build architecture-independent files here.
 binary-indep: build install
