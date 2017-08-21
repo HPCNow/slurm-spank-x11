@@ -37,7 +37,7 @@
 #include <sys/stat.h>
 
 #ifndef X11_LIBEXEC_PROG
-#define X11_LIBEXEC_PROG            "/usr/libexec/slurm-spank-x11"
+#define X11_LIBEXEC_PROG            "/usr/scheduler/slurm/plugins/slurm-spank-x11"
 #endif
 
 #define REF_FILE_PATTERN            "/tmp/slurm-spank-x11.%s"

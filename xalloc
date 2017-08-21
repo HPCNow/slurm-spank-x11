@@ -1,0 +1,3 @@
+#!/bin/bash
+#
+srun --x11=first --pty $SHELL "$@"
