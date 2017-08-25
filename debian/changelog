@@ -1,3 +1,10 @@
+slurm-spank-plugin-x11 (16.05.3) calibre7; urgency=low
+  * Compiled with version 16.05.3
+  * Code clean-up and documentation improved
+  * moved library and executable in more common path
+
+  -- Jordi Blasco <jordi.blasco@hpcnow.com>  Tue, 22 Aug 2017 12:21:10
+       +0100
 slurm-llnl-spank-plugin-x11 (14.11.4-1) calibre7; urgency=low
 
   * Bump version to 14.11.4 to keep the same versioning that slurm.

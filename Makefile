@@ -1,7 +1,7 @@
 #!/usr/bin/make
 
 CC      = gcc
-CFLAGS  ?= -g 
+CFLAGS  ?= -g -I/usr/include/slurm/spank.h  
 LDFLAGS ?= -D"X11_LIBEXEC_PROG=\"/usr/bin/slurm-spank-x11\""
 
 all: slurm-spank-x11
